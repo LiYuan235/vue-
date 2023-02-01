@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例——插值语法</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        姓:<input type="text" v-model="firstname"><br><br> 
+        名:<input type="text" v-model="lastname"><br><br>
+        姓名：<span>{{firstname.slice(0,3)}}-{{lastname}}</span>
+    </div>
+    <script type="text/javascript">
+        Vue.config.ProductionTip=false
+        let vm=new Vue(
+            {
+                el:'#root',
+                data:{
+                    firstname:"Li",
+                    lastname:"Ming"
+                }
+            }
+        )
+    </script>
+</body>
+</html>

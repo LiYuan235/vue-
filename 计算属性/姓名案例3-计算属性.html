@@ -1,0 +1,54 @@
+<!--
+ * @Descripption: 
+ * @version: 
+ * @Author: LiYuan
+ * @Date: 2023-02-01 13:22:19
+ * @LastEditors: LiYuan
+ * @LastEditTime: 2023-02-01 13:41:13
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例——methods</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        姓:<input type="text" v-model="firstname"><br><br> 
+        名:<input type="text" v-model="lastname"><br><br>
+        姓名：<span>{{fullName}}</span>
+    </div>
+    <script type="text/javascript">
+        Vue.config.ProductionTip=false
+        let vm=new Vue(
+            {
+                el:'#root',
+                data:{
+                    firstname:"Li",
+                    lastname:"Ming"
+                },
+                computed:{
+                    fullName:{
+                        //当有人初次读取fullName时，get就会调用
+                        //所依赖的数据发生变化的时候,get就会调用
+                        get(){
+                            return this.firstname+'-'+this.lastname
+                        },
+                        //当fullname被修改时，set被调用
+                        set(value){
+                            const arr=value.split('-')
+                            this.firstname=arr[0]
+                            this.lastname=arr[1]
+                            return value
+                        }
+                    }
+                }
+            }
+        )
+    </script>
+</body>
+</html>
